@@ -1,4 +1,4 @@
-# MINI-LISP Interpreter Project 2024
+# MINI-LISP Interpreter Project 
 
 Compiler Lisp Interpreter project，支援基本語法與函式呼叫。更多詳細語言介紹可參考 PDF 說明或查看原始碼。
 
