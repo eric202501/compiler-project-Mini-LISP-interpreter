@@ -1,6 +1,6 @@
-# NCU MINI-LISP Interpreter Project 2024
+# MINI-LISP Interpreter Project
 
-Welcome to the NCU MINI-LISP Interpreter Project. This project implements a mini version of the Lisp programming language that supports basic syntax and function calls. It also demonstrates concepts such as recursion and closures.
+This is a MINI-LISP Interpreter Project by using python and lark. This project implements a mini version of the Lisp programming language that supports basic syntax and function calls. It also demonstrates concepts such as recursion and closures.
 
 ## Features
 
