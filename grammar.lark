@@ -1,0 +1,55 @@
+start: statement+
+
+?statement: print_stmt | expr | def_stmt
+
+print_stmt: "(" "print-num" expr ")"  -> print_num
+    | "(" "print-bool" expr ")"    -> print_bool
+
+?expr: BOOL_VAL|NUMBER|num_op|logical_op|if_exp
+    |variable|fun_exp|fun_call
+
+
+?num_op: plus | minus | multiply | divide | modulus | greater | smaller | equal
+
+plus: "(" "+" expr expr+ ")"
+minus: "(" "-" expr expr ")"
+multiply: "(" "*" expr expr+ ")"
+divide: "(" "/" expr expr ")"
+modulus: "(" "mod" expr expr ")"
+greater: "(" ">" expr expr ")"
+smaller: "(" "<" expr expr ")"
+equal: "(" "=" expr expr+ ")"
+
+
+?logical_op: and_op | or_op | not_op
+
+and_op:"(" "and" expr expr+ ")"
+or_op:"(" "or" expr expr+ ")"
+not_op:"(" "not" expr ")"
+
+if_exp: "(" "if" test_exp then_exp else_exp ")"
+?test_exp: expr
+?then_exp: expr
+?else_exp: expr
+
+def_stmt: "(" "define" variable expr ")"
+?variable: ID
+
+fun_exp: "(" "fun" fun_ids fun_body ")"
+fun_ids: "(" ID* ")"
+?fun_body: expr
+fun_call: "(" fun_exp param* ")"
+        | "(" fun_name param* ")"
+
+?param: expr
+?fun_name: ID
+
+
+
+ID: LETTER(LETTER|DIGIT|"-")*
+LETTER: /[a-zA-Z]/
+DIGIT: /[0-9]/ 
+NUMBER: /-?\d+/
+BOOL_VAL: "#t"|"#f"
+%import common.WS
+%ignore WS
